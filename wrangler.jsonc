@@ -1,0 +1,29 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "vntez-id-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2024-11-01",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // Biến môi trường công khai (Non-sensitive configuration)
+  "vars": {
+    "ENVIRONMENT": "production",
+    "NEXT_PUBLIC_SITE_URL": "https://vntez-id.vercel.app",
+    "NEXT_PUBLIC_SUPABASE_URL": "https://stbswcnsitztbusqrdhi.supabase.co",
+    "ALLOWED_ORIGINS": "https://vntez-id.vercel.app,http://localhost:3000,http://localhost:3001"
+  }
+
+  // Khuyến nghị lưu các khóa bí mật thông qua lệnh `wrangler secret put <KEY>`:
+  // - SUPABASE_SERVICE_ROLE_KEY
+  // - VNTEZ_JWT_SECRET
+  // - VNTEZ_JWT_PRIVATE_KEY (Tùy chọn nếu dùng RS256)
+  // - VNTEZ_JWT_PUBLIC_KEY (Tùy chọn nếu dùng RS256)
+
+  // Bindings tùy chọn (Bật khi cần dùng KV/R2/D1/Hyperdrive):
+  // "kv_namespaces": [
+  //   { "binding": "OAUTH_CACHE", "id": "<KV_ID>" }
+  // ],
+  // "r2_buckets": [
+  //   { "binding": "STORAGE", "bucket_name": "vntez-assets" }
+  // ]
+}
