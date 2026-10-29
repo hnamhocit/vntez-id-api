@@ -7,6 +7,7 @@ export interface Bindings {
 
   // Domain & Client Origins
   NEXT_PUBLIC_SITE_URL: string;
+  NEXT_PUBLIC_WEB_URL?: string;
   ALLOWED_ORIGINS?: string;
 
   // Supabase Configuration

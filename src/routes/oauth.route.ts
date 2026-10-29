@@ -7,6 +7,17 @@ import { OAuthService } from "../services/oauth.service";
 export const oauthRoutes = new Hono<AppEnv>();
 
 /**
+ * GET /oauth/authorize: Chuyển hướng trình duyệt tới giao diện xác thực và chấp thuận
+ */
+oauthRoutes.get("/authorize", (c) => {
+  const webUrl = c.env.NEXT_PUBLIC_WEB_URL || "https://vntez-id.vercel.app";
+  const incomingUrl = new URL(c.req.url);
+  const targetUrl = new URL("/oauth/authorize", webUrl);
+  targetUrl.search = incomingUrl.search;
+  return c.redirect(targetUrl.toString(), 302);
+});
+
+/**
  * POST /oauth/token: Trao đổi Authorization Code lấy Access Token (PKCE + Secret)
  * Hỗ trợ cả application/x-www-form-urlencoded (RFC chuẩn) và application/json
  */
